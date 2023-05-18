@@ -1,3 +1,4 @@
+import 'package:ekaksha/pages/register/bloc/register_bloc.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,12 +11,12 @@ class AppBlocProviders {
           lazy: false,
           create: (context) => WelcomeBloc(),
         ),
-        BlocProvider(
-          lazy: false,
-          create: (context) => AppBlocs(),
-        ),
+        // BlocProvider(lazy: false, create: (context) => AppBlocs()),
         BlocProvider(
           create: (context) => SignInBloc(),
+        ),
+        BlocProvider(
+          create: (context) => RegisterBloc(),
         ),
       ];
 }
