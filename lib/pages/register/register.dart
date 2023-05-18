@@ -1,6 +1,7 @@
 import 'package:ekaksha/pages/register/bloc/register_bloc.dart';
 import 'package:ekaksha/pages/register/bloc/register_event.dart';
 import 'package:ekaksha/pages/register/bloc/register_state.dart';
+import 'package:ekaksha/pages/register/register_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -77,7 +78,8 @@ class _RegisterState extends State<Register> {
                         "Enter your detail below and free sign up"),
                   ),
                   buildLogInAndRegButton("Sign Up", "login", () {
-                    Navigator.of(context).pushNamed("register");
+                    // Navigator.of(context).pushNamed("register");
+                    RegisterController(context: context).handleEmailRegister();
                   }),
                 ],
               ),
