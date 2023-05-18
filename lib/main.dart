@@ -1,16 +1,16 @@
 import 'package:ekaksha/app_blocs.dart';
 import 'package:ekaksha/app_events.dart';
-import 'package:ekaksha/pages/%20sign_in/bloc/sign_in_blocs.dart';
 import 'package:ekaksha/pages/%20sign_in/sign_in.dart';
 import 'package:ekaksha/pages/bloc_providers.dart';
 import 'package:ekaksha/pages/register/register.dart';
-import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
+
 import 'package:ekaksha/pages/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'app_states.dart';
+import 'common/values/colors.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +40,9 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
               appBarTheme: const AppBarTheme(
-                  elevation: 0, backgroundColor: Colors.white),
+                  iconTheme: IconThemeData(color: AppColors.primaryText),
+                  elevation: 0,
+                  backgroundColor: Colors.white),
             ),
             home: const WelcomePage(),
             routes: {
