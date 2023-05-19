@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../common/values/colors.dart';
+import '../../common/values/constant.dart';
+import '../../global.dart';
 import 'bloc/welcome_state.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -141,6 +143,10 @@ class _WelcomePageState extends State<WelcomePage> {
               //     builder: (context) => const MyHomePage(),
               //   ),
               // );
+              Global.storageService
+                  .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              // print(
+              //     "The value is ${Global.storageService.getDeviceFirstOpen()}");
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("/sign_in", (route) => false);
             }

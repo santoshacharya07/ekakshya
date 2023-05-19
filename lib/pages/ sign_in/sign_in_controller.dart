@@ -1,8 +1,11 @@
+import 'package:ekaksha/common/values/constant.dart';
 import 'package:ekaksha/common/widgets/flutter_toast.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ekaksha/pages/ sign_in/bloc/sign_in_blocs.dart';
+
+import '../../global.dart';
 
 class SignInController {
   final BuildContext context;
@@ -43,7 +46,9 @@ class SignInController {
           if (user != null) {
             //we got the verified user from the firebase
 
-            toastInfo(msg: "User Exist");
+            print("User Exist");
+            Global.storageService
+                .setString(AppConstants.STORAGE_USER_TOKEN_KEY, "12345678");
 
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);
