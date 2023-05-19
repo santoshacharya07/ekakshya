@@ -3,6 +3,7 @@ import 'package:ekaksha/common/routes/names.dart';
 import 'package:ekaksha/pages/%20sign_in/bloc/sign_in_blocs.dart';
 import 'package:ekaksha/pages/%20sign_in/sign_in.dart';
 import 'package:ekaksha/pages/application/application_page.dart';
+import 'package:ekaksha/pages/application/bloc/app_bloc.dart';
 import 'package:ekaksha/pages/register/bloc/register_bloc.dart';
 import 'package:ekaksha/pages/register/register.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
@@ -28,11 +29,11 @@ class AppPages {
         page: const Register(),
         bloc: BlocProvider(create: (_) => RegisterBloc()),
       ),
-      // PageEntity(
-      //   route: AppRoutes.APPLICATION,
-      //   page: const ApplicationPage(),
-      //   //  bloc: BlocProvider(create: (_) => WelcomeBloc()),
-      // ),
+      PageEntity(
+        route: AppRoutes.APPLICATION,
+        page: const ApplicationPage(),
+        bloc: BlocProvider(create: (_) => AppBlocs()),
+      ),
     ];
   }
 
@@ -51,10 +52,12 @@ class AppPages {
       //check for route name matching when navigator gets tiggred
       var result = routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
+        print("valid route name is ${settings.name}");
         return MaterialPageRoute(
             builder: (_) => result.first.page, settings: settings);
       }
     }
+    print("invalid route name is ${settings.name}");
     return MaterialPageRoute(
         builder: (_) => const SignIn(), settings: settings);
   }

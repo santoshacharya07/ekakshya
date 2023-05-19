@@ -1,9 +1,4 @@
-import 'package:ekaksha/common/routes/pages.dart';
-import 'package:ekaksha/pages/%20sign_in/sign_in.dart';
-import 'package:ekaksha/pages/application/application_page.dart';
-import 'package:ekaksha/pages/bloc_providers.dart';
-import 'package:ekaksha/pages/register/register.dart';
-import 'package:ekaksha/pages/welcome/welcome.dart';
+import 'package:ekaksha/common/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,16 +16,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return BlocProvider(
-    //   lazy: true,
-    //   create: (context) => WelcomeBloc(),
-    //   child: ScreenUtilInit(
-    //     builder: (context, child) => const MaterialApp(
-    //       debugShowCheckedModeBanner: false,
-    //       home: WelcomePage(),
-    //     ),
-    //   ),
-    // );
     return MultiBlocProvider(
         providers: [...AppPages.allBlocProviders(context)],
         child: ScreenUtilInit(
@@ -42,13 +27,7 @@ class MyApp extends StatelessWidget {
                   elevation: 0,
                   backgroundColor: Colors.white),
             ),
-            // home: const WelcomePage(),
             onGenerateRoute: AppPages.generateRouteSetting,
-            //initialRoute:
-            // routes: {
-            //   "signIn": (context) => const SignIn(),
-            //   "register": (context) => const Register(),
-            // },
           ),
         ));
   }
