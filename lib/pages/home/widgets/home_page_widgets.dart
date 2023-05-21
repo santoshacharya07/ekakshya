@@ -1,5 +1,10 @@
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ekaksha/common/values/colors.dart';
+import 'package:ekaksha/pages/home/bloc/home_page_bloc.dart';
+import 'package:ekaksha/pages/home/bloc/home_page_event.dart';
+import 'package:ekaksha/pages/home/bloc/home_page_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 AppBar buildAppBar() {
@@ -51,7 +56,7 @@ Widget searchView() {
   return Row(
     children: [
       Container(
-        width: 280.w,
+        width: 275.w,
         height: 40.h,
         decoration: BoxDecoration(
           color: AppColors.primaryBackground,
@@ -65,7 +70,7 @@ Widget searchView() {
             height: 16.w,
             child: Image.asset("assets/icons/search.png"),
           ),
-          Container(
+          SizedBox(
             width: 240.w,
             height: 40.h,
             child: TextField(
@@ -98,23 +103,82 @@ Widget searchView() {
               obscureText: false,
             ),
           ),
-          GestureDetector(
-            child: Container(
-              width: 40.w,
-              height: 40.h,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(
-                    13.w,
-                  ),
-                ),
-                border: Border.all(color: AppColors.primaryElement),
-              ),
-              child: Image.asset("assets/icons/options.png"),
-            ),
-          ),
         ]),
+      ),
+      GestureDetector(
+        child: Container(
+          width: 40.w,
+          height: 40.h,
+          decoration: BoxDecoration(
+            color: AppColors.primaryElement,
+            borderRadius: BorderRadius.all(
+              Radius.circular(
+                13.w,
+              ),
+            ),
+            border: Border.all(color: AppColors.primaryElement),
+          ),
+          child: Image.asset("assets/icons/options.png"),
+        ),
+      ),
+    ],
+  );
+}
+
+//for sliderview
+Widget slidersView(BuildContext context, HomePageStates state) {
+  return Column(
+    children: [
+      Container(
+        margin: EdgeInsets.only(top: 20.h),
+        width: 325.w,
+        height: 160.h,
+        child: PageView(
+            onPageChanged: (value) {
+              print(value.toString());
+              context.read<HomePageBloc>().add(HomePageDots(value));
+            },
+            children: [
+              _slidersContainer(path: "assets/icons/art.png"),
+              _slidersContainer(path: "assets/icons/image1.png"),
+              _slidersContainer(path: "assets/icons/Image2.png"),
+            ]),
+      ),
+      Container(
+        child: DotsIndicator(
+          dotsCount: 3,
+          position: state.index.toDouble(),
+          decorator: DotsDecorator(
+              color: AppColors.primaryThirdElementText,
+              activeColor: AppColors.primaryElement,
+              size: const Size.square(5.0),
+              activeSize: const Size(17.0, 5.0),
+              activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0))),
+        ),
       )
     ],
+  );
+}
+
+//sliders wiedet
+Widget _slidersContainer({String path = "assets/icons/art.png"}) {
+  return Container(
+    margin: EdgeInsets.only(top: 20.h),
+    width: 325.w,
+    height: 160.h,
+    child: PageView(children: [
+      Container(
+        width: 325.w,
+        height: 160.h,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(20.h)),
+          image: DecorationImage(
+            fit: BoxFit.fill,
+            image: AssetImage(path),
+          ),
+        ),
+      ),
+    ]),
   );
 }

@@ -4,6 +4,8 @@ import 'package:ekaksha/pages/%20sign_in/bloc/sign_in_blocs.dart';
 import 'package:ekaksha/pages/%20sign_in/sign_in.dart';
 import 'package:ekaksha/pages/application/application_page.dart';
 import 'package:ekaksha/pages/application/bloc/app_bloc.dart';
+import 'package:ekaksha/pages/home/bloc/home_page_bloc.dart';
+import 'package:ekaksha/pages/home/home_page.dart';
 import 'package:ekaksha/pages/register/bloc/register_bloc.dart';
 import 'package:ekaksha/pages/register/register.dart';
 import 'package:ekaksha/pages/welcome/bloc/welcome_bloc.dart';
@@ -35,6 +37,11 @@ class AppPages {
         route: AppRoutes.APPLICATION,
         page: const ApplicationPage(),
         bloc: BlocProvider(create: (_) => AppBlocs()),
+      ),
+      PageEntity(
+        route: AppRoutes.HOME_PAGE,
+        page: const HomePage(),
+        bloc: BlocProvider(create: (_) => HomePageBloc()),
       ),
     ];
   }
