@@ -1,5 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:ekaksha/common/values/colors.dart';
+import 'package:ekaksha/common/widgets/base_text_widget.dart';
 import 'package:ekaksha/pages/home/bloc/home_page_bloc.dart';
 import 'package:ekaksha/pages/home/bloc/home_page_event.dart';
 import 'package:ekaksha/pages/home/bloc/home_page_state.dart';
@@ -194,9 +195,9 @@ Widget menuView() {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            _reusableText("Choose your course"),
+            reusableText("Choose your course"),
             GestureDetector(
-              child: _reusableText("see all",
+              child: reusableText("see all",
                   color: AppColors.primaryThirdElementText, fontSize: 10),
             ),
           ],
@@ -222,20 +223,6 @@ Widget menuView() {
   );
 }
 
-Widget _reusableText(String text,
-    {Color color = AppColors.primaryText,
-    int fontSize = 16,
-    FontWeight fontWeight = FontWeight.bold}) {
-  return Text(
-    text,
-    style: TextStyle(
-      color: color,
-      fontWeight: fontWeight,
-      fontSize: fontSize.sp,
-    ),
-  );
-}
-
 //for the menu buttons reusable text
 Widget _reusableMenuText(
   String menuText, {
@@ -250,7 +237,7 @@ Widget _reusableMenuText(
       borderRadius: BorderRadius.circular(7.w),
       border: Border.all(color: backGroundColor),
     ),
-    child: _reusableText(menuText,
+    child: reusableText(menuText,
         color: textColor, fontWeight: FontWeight.normal, fontSize: 11),
   );
 }

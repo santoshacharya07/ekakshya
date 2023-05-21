@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/values/colors.dart';
-import '../../profile/widgets/profile.dart';
+import '../../profile/profile.dart';
 
 Widget buildPage(int index) {
   List<Widget> _widget = [

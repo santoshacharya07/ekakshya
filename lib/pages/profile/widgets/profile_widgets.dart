@@ -1,4 +1,6 @@
+import 'package:ekaksha/common/routes/routes.dart';
 import 'package:ekaksha/common/values/colors.dart';
+import 'package:ekaksha/common/widgets/base_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,13 +15,7 @@ AppBar buildAppbar() {
           height: 12.h,
           child: Image.asset("assets/icons/menu.png"),
         ),
-        Text(
-          "Profile",
-          style: TextStyle(
-              color: AppColors.primaryText,
-              fontSize: 16.sp,
-              fontWeight: FontWeight.bold),
-        ),
+        reusableText("Proflie"),
         SizedBox(
           width: 24.w,
           height: 24.h,
@@ -56,12 +52,23 @@ var imagesInfo = <String, String>{
   "Love": "heart1.png",
   "Reminders": "cube.png"
 };
-Widget buildListView() {
+void func() {
+  print("on Tapped");
+  func1();
+}
+
+String func1() {
+  print("hello");
+  return "hello000000";
+}
+
+Widget buildListView(BuildContext context) {
   return Column(
     children: [
       ...List.generate(
         imagesInfo.length,
         (index) => GestureDetector(
+          onTap: () => Navigator.of(context).pushNamed(AppRoutes.SETTINGS),
           child: Container(
             margin: EdgeInsets.only(bottom: 15.h),
             child: Row(
